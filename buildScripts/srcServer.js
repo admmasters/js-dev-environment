@@ -17,6 +17,29 @@ app.use(
   })
 );
 
+app.get("/users", function(req, res) {
+  res.json([
+    {
+      id: 1,
+      firstName: "Test",
+      John: "Smith",
+      email: "john.smith@example.com"
+    },
+    {
+      id: 1,
+      firstName: "Test",
+      John: "Smith 2",
+      email: "john.smith@example.com"
+    },
+    {
+      id: 1,
+      firstName: "Test",
+      John: "Smith 3",
+      email: "john.smith@example.com"
+    }
+  ]);
+});
+
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "../src/index.html"));
 });
