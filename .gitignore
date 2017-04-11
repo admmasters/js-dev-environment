@@ -40,4 +40,4 @@ jspm_packages
 *.DS_Store
 
 # Mock DB
-./src/api/db.json
+src/api/db.json
