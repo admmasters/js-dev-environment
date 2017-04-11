@@ -38,3 +38,6 @@ jspm_packages
 
 # Mac specific
 *.DS_Store
+
+# Mock DB
+./src/api/db.json
