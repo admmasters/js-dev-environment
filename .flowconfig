@@ -1,9 +1,16 @@
-[ignore]
-.*json
-
 [include]
-src
+src/*
 
-[libs]
+[ignore]
+.*/dist/.*
+.*/build/.*
+.*/node_modules/prettier/*.
+
+.*.json
+
 
 [options]
+module.system=node
+
+[libs]
+decls/
