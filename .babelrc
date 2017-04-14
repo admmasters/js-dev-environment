@@ -1,11 +1,5 @@
 {
   "presets": [
-    "latest",
-    "react"
-  ],
-  "plugins": [
-    "transform-flow-strip-types",
-    "transform-object-rest-spread"
+    "killua"
   ]
 }
-
