@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 const App = () => {
   return (
     <div>
-      <label htmlFor="name">Hello World</label>
+      <label>Hello World</label>
     </div>
   );
 };
