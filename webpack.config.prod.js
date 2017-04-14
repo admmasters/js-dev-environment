@@ -1,25 +1,33 @@
+// @flow
 import path from 'path';
-import { minify, removeDuplicates, injectHtml, hash, externalCSS } from './webpack.plugins';
+import {
+  minifyPlugin,
+  injectHtml,
+  hash,
+  externalCSS,
+  prodLoaderOptions,
+  codeLoader,
+  prodSourceMaps,
+  commonChunksPlugin
+} from './webpack.modules';
+
+const SRC_DIR = path.resolve(__dirname, 'src');
+const OUTPUT_DIR = path.resolve(__dirname, 'dist');
 
 export default {
-  debug: true,
-  devtool: 'source-map',
-  noInfo: false,
+  devtool: prodSourceMaps,
   entry: {
-    vendor: path.resolve(__dirname, 'src/vendor'),
-    main: path.resolve(__dirname, 'src/index')
+    vendor: ['react', 'react-dom', 'whatwg-fetch'],
+    main: `${SRC_DIR}/index`
   },
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: OUTPUT_DIR,
     publicPath: '/',
     filename: '[name].[chunkhash].js'
   },
-  plugins: [hash, minify, removeDuplicates, injectHtml(), externalCSS.plugin],
+  plugins: [hash, injectHtml(), externalCSS.plugin, prodLoaderOptions, commonChunksPlugin],
   module: {
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
-      { test: /\.css$/, loader: externalCSS.loader }
-    ]
+    loaders: [codeLoader, externalCSS.loader]
   }
 };

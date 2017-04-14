@@ -1,20 +1,30 @@
-import path from "path";
-import { injectHtml } from "./webpack.plugins";
+// @flow
+import path from 'path';
+import {
+  devSourceMaps,
+  injectHtml,
+  noErrors,
+  hotModuleReplacement,
+  devLoaderOptions,
+  codeLoader,
+  devCSSLoader,
+  webpackHotMiddlewareEntry
+} from './webpack.modules';
 
 export default {
-  devtool: "inline-source-map",
-  entry: [path.resolve(__dirname, "src/index")],
-  target: "web",
+  devtool: devSourceMaps,
+  entry: [webpackHotMiddlewareEntry, path.resolve(__dirname, 'src/index')],
+  target: 'web',
   output: {
-    path: path.resolve(__dirname, "src"),
-    publicPath: "/",
-    filename: "bundle.js"
+    path: path.resolve(__dirname, 'src'),
+    publicPath: '/',
+    filename: 'bundle.js'
   },
-  plugins: [injectHtml()],
+  devServer: {
+    contentBase: path.resolve(__dirname, 'src')
+  },
+  plugins: [injectHtml(), noErrors, hotModuleReplacement, devLoaderOptions, devCSSLoader],
   module: {
-    loaders: [
-      { test: /\.js$/, exclude: /node_modules/, loaders: ["babel-loader"] },
-      { test: /\.css$/, loaders: ["style", "css"] }
-    ]
+    loaders: [codeLoader]
   }
 };
