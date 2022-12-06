@@ -44,7 +44,7 @@
     "eslint": "^3.19.0",
     "eslint-plugin-killua": "^1.0.1",
     "eslint-watch": "^3.0.1",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "flow-bin": "^0.43.1",
     "html-webpack-plugin": "^2.28.0",
